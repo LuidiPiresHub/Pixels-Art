@@ -17,5 +17,6 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'off',
     'semi': ['error', 'always'],
     'eol-last': ['error', 'always'],
+    'quotes': ['error', 'single'],
   },
 };

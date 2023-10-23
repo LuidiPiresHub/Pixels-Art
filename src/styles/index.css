@@ -11,7 +11,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 2rem;
+  overflow-x: hidden;
+  padding-inline: 2rem;
 }
 
 main {
@@ -19,4 +20,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  justify-content: center;
+  min-height: 100vh;
 }

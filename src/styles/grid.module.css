@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: repeat(var(--grid-size), 1fr);
   grid-template-rows: repeat(var(--grid-size), 1fr);
+  margin-top: calc(100px + 2rem);
   max-width: 800px;
   width: 80vw;
 }
