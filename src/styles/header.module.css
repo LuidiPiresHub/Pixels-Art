@@ -1,0 +1,67 @@
+.form {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  width: 80vw;
+}
+
+.colorPallet {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 40px;
+}
+
+.inputSize {
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  padding: 10px;
+  width: 150px;
+}
+
+.confirmBtn {
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  height: 40px;
+  padding: 10px 20px;
+}
+
+.gridChanger {
+  background-color: darkturquoise;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  height: 40px;
+  width: 160px;
+}
+
+.clearBtn {
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  height: 40px;
+  padding: 10px 20px;
+}
+
+.saveBtn {
+  background-color: darkorange;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  height: 40px;
+  padding: 10px 20px;
+}

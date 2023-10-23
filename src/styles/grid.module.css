@@ -1,0 +1,23 @@
+.grid {
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), 1fr);
+  grid-template-rows: repeat(var(--grid-size), 1fr);
+  max-width: 800px;
+  width: 80vw;
+}
+
+.pixel {
+  aspect-ratio: 1;
+  cursor: crosshair;
+  font-size: 50px;
+  user-select: none;
+}
+
+.noBorder {
+  border: none;
+}
+
+.withBorder {
+  border: 1px solid black;
+}
