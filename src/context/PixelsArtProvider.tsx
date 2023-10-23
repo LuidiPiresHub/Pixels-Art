@@ -19,15 +19,10 @@ export default function PixelsArtProvider({ children }: { children: React.ReactN
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    if (window.confirm("Tem certeza que deseja mudar o tamanho da grade?\nIsso irá apagar seu desenho!")) {
-      generateGrid();
-    }
+    generateGrid();
   };
 
-  const clearGrid = (): void => {
-    const confirmClear = window.confirm("Tem certeza que deseja apagar tudo?");
-    if (confirmClear) setPixels(generatePixels());
-  };
+  const clearGrid = (): void => setPixels(generatePixels());
 
   const savePixelArtOnLocalStorage = (): void => localStorage.setItem('pixel-art', JSON.stringify({ pixels, gridSize, gridIsDisable, pixelColor }));
 
