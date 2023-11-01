@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
+import Swal from 'sweetalert2';
 import PixelsArtContext from './PixelsArtContext';
 
 export default function PixelsArtProvider({ children }: { children: React.ReactNode }) {
@@ -19,14 +20,33 @@ export default function PixelsArtProvider({ children }: { children: React.ReactN
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    if (window.confirm("Tem certeza que deseja mudar o tamanho da grade?\nIsso irá apagar seu desenho!")) {
-      generateGrid();
-    }
+    Swal.fire({
+      icon: 'warning',
+      title: 'Alterar grade?',
+      text: 'Isso irá apagar seu desenho!',
+      confirmButtonText: 'Mudar',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then(({ isConfirmed }) => {
+      if (isConfirmed) generateGrid();
+    });
   };
 
   const clearGrid = (): void => {
-    const confirmClear = window.confirm("Tem certeza que deseja apagar tudo?");
-    if (confirmClear) setPixels(generatePixels());
+    Swal.fire({
+      icon: 'warning',
+      title: 'Limpar tudo?',
+      text: 'Você irá perder todo o seu desenho caso não tenha salvo!',
+      confirmButtonText: 'Apagar',
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+    }).then(({ isConfirmed }) => {
+      if (isConfirmed) setPixels(generatePixels());
+    });
   };
 
   const savePixelArtOnLocalStorage = (): void => localStorage.setItem('pixel-art', JSON.stringify({ pixels, gridSize, gridIsDisable, pixelColor }));
