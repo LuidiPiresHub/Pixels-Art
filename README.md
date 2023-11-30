@@ -1,27 +1,7 @@
-# React + TypeScript + Vite
+# Pixels art
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Sobre o projeto
 
-Currently, two official plugins are available:
+Construído 100% do zero durante meu curso na **Trybe**, o Pixels Art é mais do que um projeto, é uma conquista pessoal! Desenvolvido em React.js e Typescript, este projeto é uma prova do meu aprendizado, este projeto inclui uma funcionalidade especial de armazenamento em tempo real via local storage para proteger seus desenhos. Solte sua criatividade pixel a pixel e sinta o orgulho de cada traço!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## [Explore o Pixels Art aqui 🎨🖌️](https://luidi-pires-pixels-art.vercel.app)
