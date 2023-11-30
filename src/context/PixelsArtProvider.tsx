@@ -22,8 +22,10 @@ export default function PixelsArtProvider({ children }: { children: React.ReactN
   const setCssGridVariable = (gridSize: number): void => document.documentElement.style.setProperty('--grid-size', JSON.stringify(gridSize));
 
   const generateGrid = (): void => {
-    setCssGridVariable(gridSize);
-    setPixels(generatePixels());
+    if (gridSize <= 50) {
+      setCssGridVariable(gridSize);
+      setPixels(generatePixels());
+    }
   };
 
   const handleSubmit = (event: FormEvent): void => {
