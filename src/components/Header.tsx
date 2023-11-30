@@ -4,7 +4,7 @@ import PixelsArtContext from '../context/PixelsArtContext';
 import styles from '../styles/header.module.css';
 
 export default function Header() {
-  const [isTranparent, setIsTranparent] = useState(false);
+  const [isTranparent, setIsTranparent] = useState(true);
   const {
     pixelColor,
     setPixelColor,
