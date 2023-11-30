@@ -22,3 +22,9 @@
 .withBorder {
   border: 1px solid black;
 }
+
+@media (width < 768px) {
+  .grid {
+    margin-top: 0;
+  }
+}
