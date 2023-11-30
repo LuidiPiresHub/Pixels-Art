@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .header {
   height: 100px;
   position: fixed;
@@ -12,20 +14,21 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem 2rem;
   justify-content: center;
-  max-width: 573px;
+  max-width: 589px;
   width: 80vw;
 }
 
 .button {
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
   color: white;
   cursor: pointer;
-  font-size: 18px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
   height: 40px;
-  padding: 10px 20px;
+  padding: 5px 10px;
   width: 175px;
 }
 
@@ -36,7 +39,6 @@
 
 .inputSize {
   color: black;
-  font-size: 16px;
 }
 
 .confirmBtn {
@@ -45,14 +47,17 @@
 
 .gridChanger {
   background-color: darkturquoise;
+  font-size: 10.3px;
 }
 
 .clearBtn {
   background-color: red;
+  font-size: 14px;
 }
 
 .saveBtn {
   background-color: darkorange;
+  font-size: 11px;
 }
 
 @media (width <= 768px) {

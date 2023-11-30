@@ -1,11 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { exportComponentAsJPEG } from 'react-component-export-image';
 import PixelsArtContext from '../context/PixelsArtContext';
 import styles from '../styles/header.module.css';
 
 export default function Header() {
-  const [right, setRight] = useState(-100);
-  const [isActive, setIsActive] = useState(false);
   const {
     pixelColor,
     setPixelColor,
@@ -15,6 +13,9 @@ export default function Header() {
     setGridIsDisable,
     clearGrid,
     gridRef,
+    right,
+    isActive,
+    handleClick,
   } = useContext(PixelsArtContext);
 
   let colorChangeTimeout: number;
@@ -24,11 +25,6 @@ export default function Header() {
     colorChangeTimeout = setTimeout(() => {
       setPixelColor(newColor);
     }, 1);
-  };
-
-  const handleClick = () => {
-    setIsActive((prevState) => !prevState);
-    setRight(isActive ? -100 : 0);
   };
 
   return (
@@ -43,7 +39,7 @@ export default function Header() {
       </button>
       <form
         className={styles.form}
-        style={ { right: `${right}vw` }}
+        style={{ right: `${right}vw` }}
         onSubmit={handleSubmit}
       >
         <input

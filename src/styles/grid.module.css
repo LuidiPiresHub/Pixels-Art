@@ -9,7 +9,6 @@
 }
 
 .pixel {
-  aspect-ratio: 1;
   cursor: crosshair;
   font-size: 50px;
   user-select: none;

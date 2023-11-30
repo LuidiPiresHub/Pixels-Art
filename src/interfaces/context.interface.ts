@@ -12,4 +12,7 @@ export default interface PixelsArtContextProps {
   handleSubmit: (event: React.FormEvent) => void;
   isMouseDown: boolean;
   setIsMouseDown: React.Dispatch<React.SetStateAction<boolean>>;
+  right: number;
+  isActive: boolean;
+  handleClick: () => void;
 }
