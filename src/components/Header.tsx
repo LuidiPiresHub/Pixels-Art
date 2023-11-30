@@ -1,9 +1,10 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { exportComponentAsJPEG } from 'react-component-export-image';
 import PixelsArtContext from '../context/PixelsArtContext';
 import styles from '../styles/header.module.css';
 
 export default function Header() {
+  const [isTranparent, setIsTranparent] = useState(false);
   const {
     pixelColor,
     setPixelColor,
@@ -24,12 +25,14 @@ export default function Header() {
     clearTimeout(colorChangeTimeout);
     colorChangeTimeout = setTimeout(() => {
       setPixelColor(newColor);
-    }, 1);
+    }, 10);
   };
+
+  window.onscroll = () => window.scrollY > 0 ? setIsTranparent(false) : setIsTranparent(true);
 
   return (
     <header
-      className={styles.header}
+      className={`${styles.header} ${!isTranparent ? styles.headerBackground : ''}`.trim()}
     >
       <button type='button' className={styles.mobileNavibar} onClick={handleClick}>
         <span className={`${styles.bar} ${isActive ? styles.barActive : ''}`.trim()}></span>

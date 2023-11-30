@@ -1,9 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 .header {
-  height: 100px;
+  box-shadow: 0 5px 5px 5px rgba(0 0 0 / 30%);
+  display: flex;
+  justify-content: center;
+  min-height: 100px;
+  padding: 1rem 0;
   position: fixed;
-  top: 1rem;
+  top: 0;
+  transition: 300ms ease-in-out;
+  width: 100%;
+}
+
+.headerBackground {
+  background-color: rgba(32 39 83 / 95%);
 }
 
 .mobileNavibar {
