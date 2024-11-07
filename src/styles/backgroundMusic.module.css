@@ -1,0 +1,101 @@
+.musicContainer {
+  backdrop-filter: blur(10px);
+  background-color: rgb(255 255 255 / 20%);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 30%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  gap: 10px;
+  left: 20px;
+  overflow-x: hidden;
+  padding: 10px 15px;
+  position: fixed;
+  top: 20px;
+  z-index: 2;
+}
+
+.songTitle {
+  animation: blink 5s linear infinite;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@keyframes blink {
+  0%, 30% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  70%, 100% {
+    opacity: 1;
+  }
+}
+
+.seekBarWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.seekBarProgress {
+  background-color: #32CD32;
+  border-radius: 5px;
+  height: 5px;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 10px;
+  user-select: none;
+}
+
+.seekBar {
+  appearance: none;
+  background-color: #555;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 5px;
+  width: 100%;
+}
+
+.seekBar::-webkit-slider-thumb {
+  appearance: none;
+  background-color: #fff;
+  border-radius: 50%;
+  height: 10px;
+  position: relative;
+  width: 10px;
+  z-index: 2;
+}
+
+.btnWrapper {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.playPauseButton,
+.muteButton {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  height: 30px;
+  padding: 8px;
+  transition: background-color 0.3s;
+  width: 30px;
+}
+
+.playPauseButton:hover,
+.muteButton:hover {
+  background-color: rgb(255 255 255 / 20%);
+}
