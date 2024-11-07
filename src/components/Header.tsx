@@ -4,7 +4,7 @@ import PixelsArtContext from '../context/PixelsArtContext';
 import styles from '../styles/header.module.css';
 
 export default function Header() {
-  const [isTranparent, setIsTranparent] = useState(true);
+  const [isTranparent, setIsTranparent] = useState<boolean>(true);
   const {
     pixelColor,
     setPixelColor,
@@ -17,6 +17,8 @@ export default function Header() {
     right,
     isActive,
     handleClick,
+    isAdvancedMode,
+    setIsAdvancedMode,
   } = useContext(PixelsArtContext);
 
   let colorChangeTimeout: number;
@@ -38,7 +40,6 @@ export default function Header() {
         <span className={`${styles.bar} ${isActive ? styles.barActive : ''}`.trim()}></span>
         <span className={`${styles.bar} ${isActive ? styles.barActive : ''}`.trim()}></span>
         <span className={`${styles.bar} ${isActive ? styles.barActive : ''}`.trim()}></span>
-
       </button>
       <form
         className={styles.form}
@@ -51,14 +52,35 @@ export default function Header() {
           onChange={({ target: { value } }) => handleColorChange(value)}
           value={pixelColor}
         />
-        <input
-          type="number"
-          min="5"
-          max="50"
-          placeholder="Tamanho"
-          className={`${styles.inputSize} ${styles.button}`}
-          onChange={({ target: { value } }) => setGridSize(Number(value))}
-        />
+        {isAdvancedMode ? (
+          <>
+            <input
+              type="number"
+              min="5"
+              max="50"
+              placeholder="Tamanho X"
+              className={`${styles.inputSize} ${styles.button}`}
+              onChange={({ target: { value } }) => setGridSize((prevState) => ({ ...prevState, x: Number(value) }))} 
+            />
+            <input
+              type="number"
+              min="5"
+              max="50"
+              placeholder="Tamanho Y"
+              className={`${styles.inputSize} ${styles.button}`}
+              onChange={({ target: { value } }) => setGridSize((prevState) => ({ ...prevState, y: Number(value) }))}
+            />
+          </>
+        ) : (
+          <input
+            type="number"
+            min="5"
+            max="50"
+            placeholder="Tamanho"
+            className={`${styles.inputSize} ${styles.button}`}
+            onChange={({ target: { value } }) => setGridSize({ x: Number(value), y: Number(value) })}
+          />
+        )}
         <button type="submit" className={`${styles.confirmBtn} ${styles.button}`}>
           Confirmar
         </button>
@@ -78,6 +100,13 @@ export default function Header() {
           onClick={() => exportComponentAsJPEG(gridRef, { fileName: 'Minha Pixel-Art' })}
         >
           Salvar Desenho
+        </button>
+        <button
+          type='button'
+          className={`${styles.button} ${styles.advancedBtn}`}
+          onClick={() => setIsAdvancedMode((prevState) => !prevState)}
+        >
+          {isAdvancedMode ? 'Modo Simples' : 'Modo Avançado'}
         </button>
       </form>
     </header>

@@ -1,28 +1,40 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import Swal from 'sweetalert2';
 import PixelsArtContext from './PixelsArtContext';
+import { IGridSize } from '../interfaces/IGrid.interface';
+import { ILocalStorageData } from '../interfaces/localStorageData.interface';
 
 export default function PixelsArtProvider({ children }: { children: React.ReactNode }) {
   const [pixels, setPixels] = useState<string[]>([]);
   const [pixelColor, setPixelColor] = useState<string>('#000000');
-  const [gridSize, setGridSize] = useState<number>(5);
+  const [gridSize, setGridSize] = useState<IGridSize>({ x: 5, y: 5 });
   const [gridIsDisable, setGridIsDisable] = useState<boolean>(false);
   const [isMouseDown, setIsMouseDown] = useState<boolean>(false);
-
+  const [isAdvancedMode, setIsAdvancedMode] = useState<boolean>(false);
   const [right, setRight] = useState(-100);
   const [isActive, setIsActive] = useState(false);
+  const [rotateDeg, setRotateDeg] = useState(0);
 
   const handleClick = () => {
     setIsActive((prevState) => !prevState);
     setRight(isActive ? -100 : 0);
   };
 
-  const generatePixels = (): string[] => Array.from({ length: gridSize * gridSize }, () => '#ffffff');
+  const generatePixels = (): string[] => Array.from({ length: gridSize.x * gridSize.y }, () => '#ffffff');
 
-  const setCssGridVariable = (gridSize: number): void => document.documentElement.style.setProperty('--grid-size', JSON.stringify(gridSize));
+  const setCssGridVariable = ({ x, y }: IGridSize): void => {
+    if (x < y) {
+      [x, y] = [y, x];
+      setRotateDeg(90);
+    } else {
+      setRotateDeg(0);
+    }
+    document.documentElement.style.setProperty('--grid-size-x', String(x));
+    document.documentElement.style.setProperty('--grid-size-y', String(y));
+  };
 
   const generateGrid = (): void => {
-    if (gridSize <= 50) {
+    if (gridSize.x <= 50 || gridSize.y <= 50) {
       setCssGridVariable(gridSize);
       setPixels(generatePixels());
     }
@@ -65,25 +77,36 @@ export default function PixelsArtProvider({ children }: { children: React.ReactN
     });
   };
 
-  const savePixelArtOnLocalStorage = (): void => localStorage.setItem('pixel-art', JSON.stringify({ pixels, gridSize, gridIsDisable, pixelColor }));
+
+
+  const savePixelArtOnLocalStorage = (): void => {
+    localStorage.setItem('pixel-art', JSON.stringify({
+      pixels,
+      gridSize,
+      gridIsDisable,
+      pixelColor,
+      isAdvancedMode
+    }));
+  };
 
   const gridRef = useRef<HTMLDivElement | null>(null);
 
   useEffect((): void => {
     const drawData = localStorage.getItem('pixel-art');
     if (drawData) {
-      const { pixels, gridSize, pixelColor, gridIsDisable } = JSON.parse(drawData!);
+      const { pixels, gridSize, pixelColor, gridIsDisable, isAdvancedMode }: ILocalStorageData = JSON.parse(drawData);
       setPixels(pixels);
-      setGridSize(gridSize);
+      setGridSize({ x: gridSize.x, y: gridSize.y });
       setPixelColor(pixelColor);
       setGridIsDisable(gridIsDisable);
       setCssGridVariable(gridSize);
+      setIsAdvancedMode(isAdvancedMode);
     } else {
       generateGrid();
     }
   }, []);
 
-  useEffect((): void => savePixelArtOnLocalStorage(), [pixels, gridSize, gridIsDisable, pixelColor]);
+  useEffect((): void => savePixelArtOnLocalStorage(), [pixels, gridIsDisable, pixelColor, isAdvancedMode]);
 
   document.addEventListener('mousedown', () => setIsMouseDown(true));
   document.addEventListener('mouseup', () => setIsMouseDown(false));
@@ -102,10 +125,12 @@ export default function PixelsArtProvider({ children }: { children: React.ReactN
     gridRef,
     isMouseDown,
     setIsMouseDown,
-
     right,
     isActive,
     handleClick,
+    isAdvancedMode,
+    setIsAdvancedMode,
+    rotateDeg,
   };
 
   return (

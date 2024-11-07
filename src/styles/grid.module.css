@@ -1,17 +1,17 @@
 .grid {
-  aspect-ratio: 1;
+  aspect-ratio: var(--grid-size-x) / var(--grid-size-y);
   display: grid;
-  grid-template-columns: repeat(var(--grid-size), 1fr);
-  grid-template-rows: repeat(var(--grid-size), 1fr);
+  grid-template-columns: repeat(var(--grid-size-x), 1fr);
+  grid-template-rows: repeat(var(--grid-size-y), 1fr);
   margin-bottom: 1rem;
   margin-top: calc(100px + 3rem);
+  max-height: 800px;
   max-width: 800px;
   width: 80vw;
 }
 
 .pixel {
   cursor: crosshair;
-  font-size: 50px;
   user-select: none;
 }
 
@@ -21,10 +21,4 @@
 
 .withBorder {
   border: 1px solid black;
-}
-
-@media (width < 768px) {
-  .grid {
-    margin-top: 100px
-  }
 }

@@ -1,10 +1,12 @@
+import { IGridSize } from './IGrid.interface';
+
 export default interface PixelsArtContextProps {
   pixelColor: string;
   setPixelColor: React.Dispatch<React.SetStateAction<string>>;
   gridIsDisable: boolean;
   setGridIsDisable: React.Dispatch<React.SetStateAction<boolean>>;
-  gridSize: number;
-  setGridSize: React.Dispatch<React.SetStateAction<number>>;
+  gridSize: IGridSize;
+  setGridSize: React.Dispatch<React.SetStateAction<IGridSize>>;
   pixels: string[];
   setPixels: React.Dispatch<React.SetStateAction<string[]>>;
   clearGrid: () => void;
@@ -15,4 +17,7 @@ export default interface PixelsArtContextProps {
   right: number;
   isActive: boolean;
   handleClick: () => void;
+  isAdvancedMode: boolean;
+  setIsAdvancedMode: React.Dispatch<React.SetStateAction<boolean>>;
+  rotateDeg: number;
 }

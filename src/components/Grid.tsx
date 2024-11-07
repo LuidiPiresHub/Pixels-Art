@@ -9,7 +9,8 @@ export default function Grid() {
     pixelColor,
     gridIsDisable,
     gridRef,
-    isMouseDown
+    isMouseDown,
+    rotateDeg,
   } = useContext(PixelsArtContext);
 
   const paintPixel = (index: number): void => {
@@ -30,6 +31,7 @@ export default function Grid() {
     <section
       ref={gridRef}
       className={`${styles.grid} ${gridIsDisable ? styles.noBorder : styles.withBorder}`}
+      style={{ transform: `rotate(${rotateDeg}deg)` }}
     >
       {pixels.map((color, index) => (
         <div
